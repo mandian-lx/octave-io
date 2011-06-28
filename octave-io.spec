@@ -15,6 +15,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Conflicts:	octave-forge <= 20090607
 Requires:	octave >= 3.2.0
 BuildRequires:	octave-devel >= 3.2.0, MesaGL-devel, MesaGLU-devel
+BuildRequires:	texinfo
 
 %description
 Octave toolkit for I/O in external formats.
