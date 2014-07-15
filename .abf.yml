@@ -1,2 +1,4 @@
+removed_sources:
+  io-1.0.14.tar.gz: 9799d5f7a73c5717042d84114b41ecb1a80529be
 sources:
-  "io-1.0.14.tar.gz": 9799d5f7a73c5717042d84114b41ecb1a80529be
+  io-2.2.2.tar.gz: 6d9be1f1bef9d2be0c43b2090979e6fbd0d78d88

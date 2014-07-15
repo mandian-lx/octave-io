@@ -1,20 +1,21 @@
 %define	pkgname io
 
 Summary:	Octave toolkit for I/O in external formats
-Name:       octave-%{pkgname}
-Version:	1.0.14
-Release:       3
+Name:           octave-%{pkgname}
+Version:	2.2.2
+Release:        1
 Source0:	%{pkgname}-%{version}.tar.gz
 License:	GPLv2+
 Group:		Sciences/Mathematics
 Url:		http://octave.sourceforge.net/io/
-Conflicts:	octave-forge <= 20090607
-Requires:	octave >= 3.2.0
-BuildRequires:  octave-devel >= 3.2.0
+BuildRequires:  octave-devel >= 3.6.0
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:	texinfo
 BuildArch:	noarch
+Requires:       octave(api) = %{octave_api}
+Requires(post): octave
+Requires(postun): octave
 
 %description
 Octave toolkit for I/O in external formats.
@@ -32,13 +33,14 @@ tar zxf %SOURCE0
 mv %{pkgname}/COPYING .
 mv %{pkgname}/DESCRIPTION .
 
-%clean
-
 %post
-%{_bindir}/test -x %{_bindir}/octave && %{_bindir}/octave -q -H --no-site-file --eval "pkg('rebuild');" || :
+%octave_cmd pkg rebuild
+
+%preun
+%octave_pkg_preun
 
 %postun
-%{_bindir}/test -x %{_bindir}/octave && %{_bindir}/octave -q -H --no-site-file --eval "pkg('rebuild');" || :
+%octave_cmd pkg rebuild
 
 %files
 %doc COPYING DESCRIPTION
