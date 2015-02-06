@@ -3,7 +3,7 @@
 Summary:	Octave toolkit for I/O in external formats
 Name:           octave-%{pkgname}
 Version:	2.2.2
-Release:        1
+Release:        2
 Source0:	%{pkgname}-%{version}.tar.gz
 License:	GPLv2+
 Group:		Sciences/Mathematics
