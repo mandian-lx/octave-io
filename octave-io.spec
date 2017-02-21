@@ -1,10 +1,10 @@
-%define	pkgname io
+%define octpkg io
 
 Summary:	Octave toolkit for I/O in external formats
-Name:           octave-%{pkgname}
-Version:	2.2.2
-Release:        2
-Source0:	%{pkgname}-%{version}.tar.gz
+Name:           octave-%{octpkg}
+Version:	2.4.5
+Release:        1
+Source0:	http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 License:	GPLv2+
 Group:		Sciences/Mathematics
 Url:		http://octave.sourceforge.net/io/
@@ -21,17 +21,14 @@ Requires(postun): octave
 Octave toolkit for I/O in external formats.
 
 %prep
-%setup -q -c %{pkgname}-%{version}
+%setup -q -c %{octpkg}-%{version}
 cp %SOURCE0 .
 
-%install
-%__install -m 755 -d %{buildroot}%{_datadir}/octave/packages/
-export OCT_PREFIX=%{buildroot}%{_datadir}/octave/packages
-octave -q --eval "pkg prefix $OCT_PREFIX; pkg install -verbose -nodeps -local %{pkgname}-%{version}.tar.gz"
+%build
+%octave_pkg_build  -T
 
-tar zxf %SOURCE0 
-mv %{pkgname}/COPYING .
-mv %{pkgname}/DESCRIPTION .
+%install
+%octave_pkg_install
 
 %post
 %octave_cmd pkg rebuild
@@ -43,5 +40,4 @@ mv %{pkgname}/DESCRIPTION .
 %octave_cmd pkg rebuild
 
 %files
-%doc COPYING DESCRIPTION
-%{_datadir}/octave/packages/%{pkgname}-%{version}
+%{_datadir}/octave/packages/%{octpkg}-%{version}
