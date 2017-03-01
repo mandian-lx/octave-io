@@ -3,13 +3,12 @@
 Summary:	Octave toolkit for I/O in external formats
 Name:           octave-%{octpkg}
 Version:	2.4.5
-Release:        2
+Release:        3
 Source0:	http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 License:	GPLv2+
 Group:		Sciences/Mathematics
 Url:		http://octave.sourceforge.net/io/
 BuildRequires:  octave-devel >= 3.6.0
-BuildArch:	noarch
 Requires:       octave(api) = %{octave_api}
 Requires(post): octave
 Requires(postun): octave
@@ -37,4 +36,5 @@ cp %SOURCE0 .
 %octave_cmd pkg rebuild
 
 %files
-%{_datadir}/octave/packages/%{octpkg}-%{version}
+%{octpkgdir}
+%{octpkglibdir}
