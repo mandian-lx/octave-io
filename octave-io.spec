@@ -8,7 +8,7 @@ Source0:	http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 License:	GPLv3+ and BSD
 Group:		Sciences/Mathematics
 Url:		https://octave.sourceforge.io/io/
-BuildRequires:  octave-devel >= 3.6.0
+BuildRequires:  octave-devel >= 3.8.0
 Requires:       octave(api) = %{octave_api}
 Requires(post): octave
 Requires(postun): octave
