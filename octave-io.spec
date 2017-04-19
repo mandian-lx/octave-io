@@ -5,7 +5,7 @@ Name:           octave-%{octpkg}
 Version:	2.4.5
 Release:        3
 Source0:	http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
-License:	GPLv2+
+License:	GPLv3+ and BSD
 Group:		Sciences/Mathematics
 Url:		http://octave.sourceforge.net/io/
 BuildRequires:  octave-devel >= 3.6.0
