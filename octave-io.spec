@@ -1,22 +1,19 @@
 %define	pkgname io
 %define name	octave-%{pkgname}
-%define version 1.0.14
+%define version 2.4.5
 
 Summary:	Octave toolkit for I/O in external formats
 Name:		%{name}
 Version:	%{version}
-Release:        2
+Release:        3
 Source0:	%{pkgname}-%{version}.tar.gz
-License:	GPLv2+
+License:	GPLv3+ and BSD
 Group:		Sciences/Mathematics
-Url:		http://octave.sourceforge.net/io/
-Conflicts:	octave-forge <= 20090607
-Requires:	octave >= 3.2.0
-BuildRequires:  octave-devel >= 3.2.0
-BuildRequires:  mesagl-devel
-BuildRequires:  mesaglu-devel
-BuildRequires:	texinfo
-BuildArch:	noarch
+Url:		https://octave.sourceforge.io/io/
+BuildRequires:  octave-devel >= 3.8.0
+Requires:       octave(api) = %{octave_api}
+Requires(post): octave
+Requires(postun): octave
 
 %description
 Octave toolkit for I/O in external formats.
@@ -26,7 +23,7 @@ Octave toolkit for I/O in external formats.
 cp %SOURCE0 .
 
 %install
-%__install -m 755 -d %{buildroot}%{_datadir}/octave/packages/
+install -m 0755 -d %{buildroot}%{_datadir}/octave/packages/
 export OCT_PREFIX=%{buildroot}%{_datadir}/octave/packages
 octave -q --eval "pkg prefix $OCT_PREFIX; pkg install -verbose -nodeps -local %{pkgname}-%{version}.tar.gz"
 
