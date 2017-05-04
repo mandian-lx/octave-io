@@ -15,7 +15,6 @@ Url:		https://octave.sourceforge.io/%{octpkg}/
 BuildRequires:	octave-devel >= 3.8.0
 
 Requires:	octave(api) = %{octave_api}
-Requires:	octave-octave < 4.4.0
 
 Requires(post): octave
 Requires(postun): octave

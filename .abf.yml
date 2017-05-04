@@ -1,5 +1,2 @@
-removed_sources:
-  io-1.0.14.tar.gz: 9799d5f7a73c5717042d84114b41ecb1a80529be
-  io-2.2.2.tar.gz: 6d9be1f1bef9d2be0c43b2090979e6fbd0d78d88
 sources:
-  io-2.4.5.tar.gz: 22ce66fbf42c35b24258376c6ef8a435bf7c662d
+  "io-2.4.7.tar.gz": f2281210fc46fae2d151ed15448632f8bdc5fb71  
