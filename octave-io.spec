@@ -1,53 +1,53 @@
-%define	pkgname io
-%define name	octave-%{pkgname}
-%define version 2.4.5
+%define octpkg io
 
-Summary:	Octave toolkit for I/O in external formats
-Name:		%{name}
-Version:	%{version}
-Release:        3
-Source0:	%{pkgname}-%{version}.tar.gz
+# Exclude .oct files from provides
+%define __provides_exclude_from ^%{octpkglibdir}/.*.oct$
+
+Summary:	Input/Output in external formats
+Name:		octave-%{octpkg}
+Version:	2.4.7
+Release:	0
+Source0:	http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 License:	GPLv3+ and BSD
 Group:		Sciences/Mathematics
-Url:		https://octave.sourceforge.io/io/
-BuildRequires:  octave-devel >= 3.8.0
-Requires:	octave >= 3.8.0
+Url:		https://octave.sourceforge.io/%{octpkg}/
+
+BuildRequires:	octave-devel >= 3.8.0
+
+Requires:	octave(api) = %{octave_api}
+Requires:	octave-octave < 4.4.0
+
 Requires(post): octave
 Requires(postun): octave
 
 %description
-Octave toolkit for I/O in external formats.
+Input/Output in external formats.
+
+This package is part of community Octave-Forge collection.
 
 %prep
-%setup -q -c %{pkgname}-%{version}
-cp %SOURCE0 .
+%setup -qcT
+
+%build
+%octave_pkg_build -T
 
 %install
-install -m 0755 -d %{buildroot}%{_datadir}/octave/packages/
-export OCT_PREFIX=%{buildroot}%{_datadir}/octave/packages
-octave -q --eval "pkg prefix $OCT_PREFIX; pkg install -verbose -nodeps -local %{pkgname}-%{version}.tar.gz"
-
-tar zxf %SOURCE0 
-mv %{pkgname}/COPYING .
-mv %{pkgname}/DESCRIPTION .
-
-%clean
+%octave_pkg_install
 
 %post
-%{_bindir}/test -x %{_bindir}/octave && %{_bindir}/octave -q -H --no-site-file --eval "pkg('rebuild');" || :
+%octave_cmd pkg rebuild
+
+%preun
+%octave_pkg_preun
 
 %postun
-%{_bindir}/test -x %{_bindir}/octave && %{_bindir}/octave -q -H --no-site-file --eval "pkg('rebuild');" || :
+%octave_cmd pkg rebuild
 
 %files
-%defattr(-,root,root)
-%doc COPYING DESCRIPTION
-%{_datadir}/octave/packages/%{pkgname}-%{version}
-
-
-%changelog
-* Tue Jun 28 2011 Lev Givon <lev@mandriva.org> 1.0.14-1mdv2011.0
-+ Revision: 688037
-- import octave-io
-
+%dir %{octpkglibdir}
+%{octpkglibdir}/*
+%dir %{octpkgdir}
+%{octpkgdir}/*
+%doc %{octpkg}-%{version}/NEWS
+%doc %{octpkg}-%{version}/COPYING
 
