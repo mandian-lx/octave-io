@@ -6,7 +6,7 @@
 Summary:	Input/Output in external formats
 Name:		octave-%{octpkg}
 Version:	2.4.7
-Release:	1
+Release:	0
 Source0:	http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 License:	GPLv3+ and BSD
 Group:		Sciences/Mathematics
@@ -15,7 +15,6 @@ Url:		https://octave.sourceforge.io/%{octpkg}/
 BuildRequires:	octave-devel >= 3.8.0
 
 Requires:	octave(api) = %{octave_api}
-Requires:	octave-Octave < 4.4.0
 
 Requires(post): octave
 Requires(postun): octave
