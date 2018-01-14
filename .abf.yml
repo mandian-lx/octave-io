@@ -1,2 +1,4 @@
+removed_sources:
+  io-2.4.7.tar.gz: f2281210fc46fae2d151ed15448632f8bdc5fb71
 sources:
-  io-2.4.7.tar.gz: f2281210fc46fae2d151ed15448632f8bdc5fb71  
+  io-2.4.10.tar.gz: 2b09a710035d6f8a4ee505cab693738b73280c8d
