@@ -5,7 +5,7 @@
 
 Summary:	Input/Output in external formats
 Name:		octave-%{octpkg}
-Version:	2.4.10
+Version:	2.4.11
 Release:	1
 Source0:	http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 License:	GPLv3+ and BSD
